@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: #ffffff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.navbar h1 {
+  font-size: 20px;
+}
+
+.nav-buttons button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+.nav-buttons .active {
+  background: #2563eb;
+  color: white;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* ===== FORM ===== */
+label {
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+/* ===== BUTTON ===== */
+.primary-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #1e40af;
+}
+
+/* ===== MESSAGE ===== */
+#message {
+  margin-top: 15px;
+  color: green;
+  font-weight: 600;
+}
+
+/* ===== ADMIN DASHBOARD ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.stat-card span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.stat-card strong {
+  font-size: 26px;
+}
+
+/* COLORS */
+.blue { border-left: 5px solid #2563eb; }
+.yellow { border-left: 5px solid #f59e0b; }
+.green { border-left: 5px solid #22c55e; }
+.red { border-left: 5px solid #ef4444; }
+
+/* ===== COMPLAINT CARD ===== */
+.complaint {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.pending { background: #fef3c7; color: #92400e; }
+.resolved { background: #dcfce7; color: #166534; }
+.rejected { background: #fee2e2; color: #991b1b; }
