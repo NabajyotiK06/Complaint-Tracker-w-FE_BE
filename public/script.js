@@ -102,7 +102,7 @@ async function loadComplaints() {
         </option>
       </select>
 
-      <button onclick="deleteComplaint('${c.id}')">
+      <button class="delete-btn" onclick="deleteComplaint('${c.id}')">
         Delete
       </button>
     `;

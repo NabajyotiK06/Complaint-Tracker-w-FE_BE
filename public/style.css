@@ -154,3 +154,18 @@ textarea {
 .pending { background: #fef3c7; color: #92400e; }
 .resolved { background: #dcfce7; color: #166534; }
 .rejected { background: #fee2e2; color: #991b1b; }
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
