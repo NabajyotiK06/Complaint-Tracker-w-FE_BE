@@ -1,25 +1,19 @@
-/* =========================
-   COMMON VARIABLES
-========================= */
-
 const form = document.getElementById("complaintForm");
 const message = document.getElementById("message");
 const complaintsDiv = document.getElementById("complaints");
-
 const totalCountEl = document.getElementById("totalCount");
 const pendingCountEl = document.getElementById("pendingCount");
 const resolvedCountEl = document.getElementById("resolvedCount");
 const rejectedCountEl = document.getElementById("rejectedCount");
 
-/* =========================
-   USER PORTAL LOGIC
-========================= */
 
+
+// submit handler
 if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Collect form data
+    // form data collection
     const data = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
@@ -49,12 +43,10 @@ if (form) {
   });
 }
 
-/* =========================
-   ADMIN DASHBOARD LOGIC
-========================= */
 
-if (complaintsDiv) {
-  loadComplaints();
+
+// admin dashboard logic
+if (complaintsDiv && !document.getElementById("passwordOverlay")) {
 }
 
 async function loadComplaints() {
@@ -63,14 +55,14 @@ async function loadComplaints() {
 
   complaintsDiv.innerHTML = "";
 
-  // Counters
+  // counters
   let total = complaints.length;
   let pending = 0;
   let resolved = 0;
   let rejected = 0;
 
   complaints.forEach(c => {
-    // Count statuses
+    // count statuses
     if (c.status === "pending") pending++;
     if (c.status === "resolved") resolved++;
     if (c.status === "rejected") rejected++;
@@ -88,7 +80,8 @@ async function loadComplaints() {
       <br><br>
 
       <b>${c.subject}</b><br>
-      ${c.name} (${c.email})<br><br>
+      ${c.name} (${c.email})<br>
+      <p style="margin: 10px 0; color: #4b5563; font-size: 14px;">${c.description}</p><br>
 
       <select onchange="updateStatus('${c.id}', this.value)">
         <option value="pending" ${c.status === "pending" ? "selected" : ""}>
@@ -110,17 +103,15 @@ async function loadComplaints() {
     complaintsDiv.appendChild(div);
   });
 
-  // Update dashboard counters
+  // update dashboard counters
   if (totalCountEl) totalCountEl.innerText = total;
   if (pendingCountEl) pendingCountEl.innerText = pending;
   if (resolvedCountEl) resolvedCountEl.innerText = resolved;
   if (rejectedCountEl) rejectedCountEl.innerText = rejected;
 }
 
-/* =========================
-   UPDATE STATUS
-========================= */
 
+// update function
 function updateStatus(id, status) {
   fetch(`/complaints/${id}`, {
     method: "PUT",
@@ -131,9 +122,32 @@ function updateStatus(id, status) {
   }).then(() => loadComplaints());
 }
 
-/* =========================
-   DELETE COMPLAINT
-========================= */
+
+
+function checkPassword() {
+  const input = document.getElementById("adminPassword");
+  const overlay = document.getElementById("passwordOverlay");
+  const dashboard = document.getElementById("adminDashboard");
+  const error = document.getElementById("loginError");
+
+  // static password for demonstration
+  if (input.value === "admin123") {
+    overlay.style.display = "none";
+    dashboard.style.display = "block";
+    loadComplaints();
+  } else {
+    error.style.display = "block";
+  }
+}
+
+
+// allow Enter key to submit password
+const passInput = document.getElementById("adminPassword");
+if (passInput) {
+  passInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") checkPassword();
+  });
+}
 
 function deleteComplaint(id) {
   fetch(`/complaints/${id}`, {

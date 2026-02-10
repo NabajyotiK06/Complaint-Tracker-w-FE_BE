@@ -1,48 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <h1>Complaint / Issue Tracker</h1>
-  <div class="nav-buttons">
-    <a href="index.html"><button>User Portal</button></a>
-    <button class="active">Admin Panel</button>
-  </div>
-</header>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <h1>Complaint / Issue Tracker</h1>
+    <div class="nav-buttons">
+      <a href="index.html"><button>User Portal</button></a>
+      <button class="active">Admin Panel</button>
+    </div>
+  </header>
 
-<div class="container">
-  <h2>Admin Dashboard</h2>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat-card blue">
-      <span>Total Complaints</span>
-      <strong id="totalCount">0</strong>
-    </div>
-    <div class="stat-card yellow">
-      <span>Pending</span>
-      <strong id="pendingCount">0</strong>
-    </div>
-    <div class="stat-card green">
-      <span>Resolved</span>
-      <strong id="resolvedCount">0</strong>
-    </div>
-    <div class="stat-card red">
-      <span>Rejected</span>
-      <strong id="rejectedCount">0</strong>
+  <!-- PASSWORD auth -->
+  <div id="passwordOverlay" class="overlay">
+    <div class="login-box">
+      <h2>Admin Access</h2>
+      <p>Enter password to continue</p>
+      <input type="password" id="adminPassword" placeholder="Password">
+      <button onclick="checkPassword()" class="primary-btn">Login</button>
+      <p id="loginError" style="color:red; display:none; margin-top:10px;">Incorrect Password</p>
     </div>
   </div>
 
-  <!-- COMPLAINT LIST -->
-  <div id="complaints"></div>
-</div>
+  <div class="container" id="adminDashboard" style="display: none;">
+    <h2>Admin Dashboard</h2>
 
-<script src="script.js"></script>
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-card blue">
+        <span>Total Complaints</span>
+        <strong id="totalCount">0</strong>
+      </div>
+      <div class="stat-card yellow">
+        <span>Pending</span>
+        <strong id="pendingCount">0</strong>
+      </div>
+      <div class="stat-card green">
+        <span>Resolved</span>
+        <strong id="resolvedCount">0</strong>
+      </div>
+      <div class="stat-card red">
+        <span>Rejected</span>
+        <strong id="rejectedCount">0</strong>
+      </div>
+    </div>
+
+    <!-- COMPLAINT LIST -->
+    <div id="complaints"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

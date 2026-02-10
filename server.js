@@ -4,7 +4,6 @@ import path from "path";
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON
 app.use(express.json());
 
 // Serve frontend files
@@ -14,7 +13,7 @@ app.use(express.static("public"));
 let complaints = [];
 let nextId = 1;
 
-/* ================= API ROUTES ================= */
+
 
 // GET all complaints
 app.get("/complaints", (req, res) => {
@@ -23,7 +22,7 @@ app.get("/complaints", (req, res) => {
 
 // GET complaint by ID
 app.get("/complaints/:id", (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   const complaint = complaints.find(c => c.id === id);
 
@@ -78,7 +77,9 @@ app.delete("/complaints/:id", (req, res) => {
   res.json({ message: "Complaint deleted" });
 });
 
-/* ================= SERVER ================= */
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
